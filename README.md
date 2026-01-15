@@ -1,7 +1,7 @@
 # 🎤 Karaoke Piel Canela – React JS
 
 Este proyecto es una aplicación web desarrollada en **React JS** que funciona como un **karaoke interactivo** de la canción **“Piel Canela”**, un bolero clásico compuesto por **Bobby Capó**.  
-La aplicación permite al usuario seguir la letra de la canción de forma sincronizada mientras se reproduce el audio, simulando la experiencia de un karaoke tradicional.
+La aplicación permite al usuario seguir la letra de la canción de forma sincronizada, simulando la experiencia de un karaoke tradicional.
 
 ---
 
@@ -9,7 +9,7 @@ La aplicación permite al usuario seguir la letra de la canción de forma sincro
 
 El objetivo principal de este proyecto es demostrar el uso de **React JS** para la creación de interfaces dinámicas e interactivas, aplicando conceptos fundamentales del desarrollo frontend moderno.
 
-El sistema muestra la letra de la canción y la resalta conforme avanza la reproducción del audio, brindando una experiencia visual clara, sencilla e intuitiva.
+El sistema muestra la letra de la canción y la resalta conforme avanza la reproducción, brindando una experiencia visual clara, sencilla e intuitiva.
 
 ---
 
@@ -103,7 +103,6 @@ http://localhost:5173
 
 ## 🎯 Funcionalidades
 
-- Reproducción de la canción
 - Visualización de la letra
 - Resaltado dinámico de la letra
 - Diseño responsivo
