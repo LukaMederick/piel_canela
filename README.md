@@ -92,14 +92,8 @@ http://localhost:5173
 ## 📂 Estructura del proyecto
 
 ```bash
-src/
-│── components/
-│   ├── Karaoke.jsx
-│   ├── Lyrics.jsx
-│   └── AudioPlayer.jsx
-│
-│── assets/
-│   └── piel-canela.mp3
+│── src/
+│ 
 │
 │── App.jsx
 │── main.jsx
