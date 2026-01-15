@@ -29,7 +29,6 @@ El sistema muestra la letra de la canción y la resalta conforme avanza la repro
 - JavaScript (ES6+)
 - CSS3
 - HTML5
-- Reproducción de audio con `<audio>`
 - Node.js
 - npm
 
