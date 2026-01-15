@@ -125,7 +125,7 @@ Este proyecto permite reforzar conocimientos en:
 ## 👨‍💻 Autor
 
 Jose Manuel Garcia Calixto  
-GitHub: https://github.com/devgarcia
+GitHub: https://github.com/devgarciacali
 
 ---
 
