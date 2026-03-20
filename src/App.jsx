@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react'; // Añadimos useRef
 import { motion, AnimatePresence } from 'framer-motion';
 import KaraokeLine from './components/KaraokeText';
 
@@ -24,21 +24,32 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0); 
   
-  // Simular el avance del tiempo de la canción
+  // REFERENCIA AL AUDIO: Asegúrate que el nombre coincida con tu archivo en /public
+  const audioRef = useRef(new Audio('/piel_canela.mp3'));
+
+  // Efecto para controlar la reproducción del audio real
+  useEffect(() => {
+    if (isPlaying) {
+      audioRef.current.play().catch(err => console.log("Esperando interacción..."));
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isPlaying]);
+
+  // Simular el avance del tiempo de la canción sincronizado
   useEffect(() => {
     if (!isPlaying) return;
     
-    const startTime = Date.now();
     const interval = setInterval(() => {
-      const elapsed = (Date.now() - startTime) / 1000; // Convertir a segundos
+      // Usamos el tiempo REAL del audio para que no se desincronice
+      const elapsed = audioRef.current.currentTime;
       setCurrentTime(elapsed);
       
-      // Detener cuando termine la última línea
       if (elapsed > lyricsData[lyricsData.length - 1].time + lyricsData[lyricsData.length - 1].duration) {
         setIsPlaying(false);
         clearInterval(interval);
       }
-    }, 50); // Actualizar cada 50ms para animación suave
+    }, 50);
     
     return () => clearInterval(interval);
   }, [isPlaying]);
@@ -73,7 +84,7 @@ function App() {
       </div>
 
       {/* Interfaz principal */}
-      {!isPlaying ? (
+      {!isPlaying && currentTime === 0 ? ( // Solo mostramos inicio si no ha empezado
         <div className="text-center z-10 flex flex-col items-center justify-center h-full">
           <button 
             onClick={() => setIsPlaying(true)}
@@ -93,7 +104,7 @@ function App() {
         </div>
       ) : (
         <div className="w-full h-full flex flex-col items-center justify-center p-8 absolute inset-0 text-center z-10">
-           
+            
            <div className="max-w-5xl z-20 relative px-4 flex flex-col gap-6 items-center min-h-[50vh] justify-center">
              
              {/* Contenedor de línea activa */}
@@ -173,9 +184,10 @@ function App() {
            <button 
              onClick={() => {
                setIsPlaying(false);
+               audioRef.current.currentTime = 0; // Reiniciamos el audio real
                setCurrentTime(0);
              }}
-             className="absolute top-5 right-5 text-sm opacity-60 hover:opacity-100 z-50 text-[#f3e5ab] border border-[#f3e5ab] px-4 py-2 rounded-full transition-opacity"
+             className="absolute top-5 right-5 text-sm opacity-60 hover:opacity-100 z-50 text-[#f3e5ab] border border-[#f3e5ab] px-4 py-2 rounded-full transition-opacity cursor-pointer"
            >
              ⟲ REINICIAR
            </button>
